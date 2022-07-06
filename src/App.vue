@@ -1,12 +1,36 @@
 <template>
   <div class="container">
-    Hello World
+    <todo-form
+      @addTask="addTask"
+    />
+    <todo-list
+      :tasks="tasks"
+    />
   </div>
 </template>
 
 <script>
-export default {
+import TodoForm from '@/components/TodoForm'
+import TodoList from '@/components/TodoList'
 
+export default {
+  components: {
+    TodoForm,
+    TodoList,
+  },
+  data() {
+    return {
+      tasks: [
+        { text: 'Помыть посуду' },
+        { text: 'Убрать в комнате' },
+      ],
+    }
+  },
+  methods: {
+    addTask(task) {
+      this.tasks.push(task)
+    },
+  },
 }
 </script>
 
